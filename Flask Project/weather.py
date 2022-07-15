@@ -236,3 +236,25 @@ class WeatherList(Resource):
 
         connection.close()
         return {'Weather Stats': wstat}
+
+
+class RegisteredUser(Resource):
+    """
+        This class gets all the registered users
+    """
+    def get(self):
+        connection, cursor = DatabaseConfig('weatherDB').createConnection()
+        
+        query = "SELECT * FROM users_cred"
+        result = cursor.execute(query)
+    
+        users = []
+        for row in result:
+            users.append( {  
+                               'username':row[0],
+                               'password': row[1]
+                    }
+                )
+
+        connection.close()
+        return {'Registered Users': users}

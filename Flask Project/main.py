@@ -10,7 +10,7 @@ from flask_restful import Api
 from flask_jwt import JWT
 from user import RegisterUser
 from security import authenticate, identity
-from weather import Weather, WeatherList
+from weather import Weather, WeatherList, RegisteredUser
 
 
 
@@ -31,6 +31,7 @@ api.add_resource(Weather,'/weather')                # 127.0.0.1:5000/weather
 api.add_resource(WeatherList,'/weather/records')    # {{url}}/weather/records
 api.add_resource(RegisterUser,'/user/register')     # {{url}}/user/register
 
+api.add_resource(RegisteredUser,'/registered/users')
 
 if __name__ == '__main__':
     # app.run(port=5000) # here, debug is off. it won't show us errors if any

@@ -7,7 +7,6 @@ class DatabaseConfig:
             - creates connection with database and sqlite3 server
             - create connection for server
             - commit the changes: connection in this case
-            - close the connection()
     '''
     def __init__(self, databaseName=None):      # constructor which initailizes the db name
         self.databaseName = databaseName
@@ -18,8 +17,3 @@ class DatabaseConfig:
         connection = sqlite3.connect(databaseName)  # connect with database
         cursor = connection.cursor() # create connection with cursor
         return connection, cursor  
-
-    def commitClose(self):   # commiting the changes & closing the connection
-        connection, cursor = self.createConnection() 
-        connection.commit()
-        connection.close()
